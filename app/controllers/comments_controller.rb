@@ -4,8 +4,9 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to prototype_path(@comment.prototype)
     else
+      @user = User.find(params[:id])
       @prototype = @comment.prototype
-      render "prototypes/show", status: :unprocessable_entity
+      render "users/show", status: :unprocessable_entity
     end
   end
 
